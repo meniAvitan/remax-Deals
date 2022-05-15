@@ -1,0 +1,166 @@
+* {
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+.title {
+    text-align: center;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.addDeal {
+    position: absolute;
+    top: 5%;
+    right: 3%;
+    border: 3px solid #999;
+    border-radius: 50%;
+    padding: 18px 20px;
+}
+
+.addDeal i {
+    font-size: 1.5rem;
+    color: rgb(75, 75, 174);
+    font-weight: bold;
+}
+
+.profile {
+    position: absolute;
+    top: 5%;
+    left: 3%;
+    background-color: #999;
+    border-radius: 50%;
+    border: none;
+    padding: 18px 20px;
+}
+
+.profile i {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card_wrap {
+    width: 250px;
+    height: 300px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 15px;
+    position: relative;
+}
+
+.agent_color {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 25%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    z-index: -1;
+}
+
+.color-1 {
+    background-color: rgb(226, 139, 26);
+}
+
+.color-2 {
+    background-color: rgb(38, 193, 139);
+}
+
+.color-3 {
+    background-color: rgb(66, 159, 216);
+}
+
+.color-4 {
+    background-color: rgb(198, 74, 83);
+}
+
+.color-5 {
+    background-color: rgb(220, 178, 106);
+}
+
+.color-6 {
+    background-color: rgb(66, 216, 124);
+}
+
+.color-7 {
+    background-color: rgb(63, 40, 168);
+}
+
+.color-8 {
+    background-color: rgb(213, 66, 216);
+}
+
+.color-9 {
+    background-color: rgb(71, 43, 71);
+}
+
+.color-10 {
+    background-color: rgb(197, 197, 42);
+}
+
+.color-11 {
+    background-color: rgb(216, 109, 66);
+}
+
+.color-12 {
+    background-color: rgb(213, 66, 216);
+}
+
+.cardNumber {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.profileImage {
+    width: 100px;
+    height: 100px;
+}
+
+.profileImage img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.row {
+    margin-top: 15px;
+}
+
+.action {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(90, 129, 188);
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 10px;
+}
+
+.action i {
+    margin: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+}

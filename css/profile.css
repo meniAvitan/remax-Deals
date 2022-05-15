@@ -1,0 +1,118 @@
+* {
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+.title {
+    text-align: center;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.agent_color {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 30%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    z-index: -1;
+}
+
+.addDeal {
+    position: absolute;
+    top: 5%;
+    right: 3%;
+    border: 3px solid #999;
+    border-radius: 50%;
+    padding: 13px 15px;
+}
+
+.addDeal i {
+    font-size: 1.5rem;
+    color: rgb(75, 75, 174);
+    font-weight: bold;
+}
+
+.home {
+    position: absolute;
+    top: 5%;
+    left: 3%;
+    background-color: #999;
+    border-radius: 50%;
+    border: none;
+    padding: 18px 20px;
+}
+
+.home i {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card_wrap {
+    width: 250px;
+    height: 200px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 15px;
+    position: relative;
+}
+
+.profileImage {
+    width: 100px;
+    height: 100px;
+}
+
+.profileImage img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.old_image {
+    width: 100px;
+    height: 100px;
+}
+
+.row {
+    margin-top: 15px;
+}
+
+.action {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(90, 129, 188);
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 10px;
+}
+
+.action i {
+    margin: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+}

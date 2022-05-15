@@ -1,0 +1,20 @@
+.agent_num_table {
+    display: flex;
+    justify-content: center;
+}
+
+.table {
+    width: 35% !important;
+    text-align: center;
+}
+
+.agent_color_wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.agentColor {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
