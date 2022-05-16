@@ -34,13 +34,13 @@ include 'config/app.php';
                             $deal = $model->editDeal($id);
 
                             if (isset($_POST['update_deal'])) {
-                                if (isset($_POST['agentNmae']) ) {
-                                if (!empty($_POST['agentNmae'])  ) {
+                                
+                                
                                     
                                     $data['id'] = $id;
-                                    $data['agent_id'] = $_POST['agentNmae'];
+                                    
                                     $data['address'] = htmlspecialchars($_POST['address']);
-                                    $data['typeDeal'] = htmlspecialchars($_POST['typeDeal']);
+                                    
                                     $data['price'] = htmlspecialchars($_POST['price']);
                             
                                     $update = $model->updateDeal($data);
@@ -48,22 +48,16 @@ include 'config/app.php';
         
                             
                                     if($update){
-                                            var_dump($update);
         
-                                        // echo "<script>alert('You updated a deal successfuly!');</script>";
-                                        // echo "<script> window.location.href = 'index.php' </script>";
+                                        echo "<script>alert('You updated a deal successfuly!');</script>";
+                                        echo "<script> window.location.href = 'index.php' </script>";
                                     }else{
-                                        var_dump($update);
-                                        // echo "<script>alert('Add deal failed!');</script>";
-                                        // header("Location: updateDeal.php?id=$id");
+                                        echo "<script>alert('Add deal failed!');</script>";
+                                        header("Location: updateDeal.php?id=$id");
                                     }
                             
-                                }else{
-                                    var_dump($update);
-                                    // echo "<script>alert('empty');</script>";
-                                    // header("Location: updateDeal.php?id=$id");
-                                }
-                                }
+                                
+                                
                             }
                             
                         ?>
@@ -72,7 +66,7 @@ include 'config/app.php';
                                 <label for="">שם סוכנת</label>
                                 <div class="old_name form-control mb-2"><?php echo $deal['name'] ?></div>
                                 <select class="form-select form-control" name="agentName" aria-label="Default select example">
-                                    <option selected>שם הסוכנת מרשימת בחירה</option>
+                                    <option value="" selected>שם הסוכנת מרשימת בחירה</option>
                                     <option value="1">תמר</option>
                                     <option value="2">הילדה</option>
                                     <option value="3">חוה</option>
@@ -95,7 +89,7 @@ include 'config/app.php';
                                 <label for="">סוג העסקה</label>
                                 <div class="old_name form-control mb-2"><?php echo $deal['type'] ?></div>
                                 <select class="form-select form-control" name="typeDeal" aria-label="Default select example">
-                                    <option selected>סוג העסקה מרשימת בחירה</option>
+                                    <option value="" selected>סוג העסקה מרשימת בחירה</option>
                                     <option value="מכירה">מכירה</option>
                                     <option value="קניה">קניה</option>
                                     <option value="השכרה">השכרה</option>

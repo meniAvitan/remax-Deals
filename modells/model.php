@@ -7,7 +7,18 @@ class Model{
         $this->conn = $db->conn;
     }
 
-    
+    public function getCountDealsByAgent(){
+        $data = null;
+        $query = "SELECT DISTINCT ad.agent_id, COUNT(*) as sumDeals, a.name, a.color FROM agent_deal ad LEFT JOIN agent a ON a.agent_id = ad.agent_id GROUP BY ad.agent_id";
+        
+        if($sql = $this->conn->query($query)){
+            
+            while($row =  mysqli_fetch_assoc($sql)){
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
 
     public function getDeals(){
         $data = null;
@@ -42,34 +53,33 @@ class Model{
 
     public function updateDeal($data){
 
-        $query = "UPDATE deals d LEFT JOIN agent_deal ad ON d.id = ad.deal_id LEFT JOIN agent a ON a.agent_id = ad.agent_id SET d.address = '$data[address]' , d.type = '$data[typeDeal]' , d.price = '$data[price]' , ad.agent_id = '$data[agent_id]' WHERE d.id = '$data[id]'";
-        if ($sql = $this->conn->query($query)) {
+
+        $query = "UPDATE deals d LEFT JOIN agent_deal ad ON d.id = ad.deal_id 
+        LEFT JOIN agent a ON a.agent_id = ad.agent_id 
+        SET d.address = ? , d.type = ? , d.price = ? , ad.agent_id = ? 
+        WHERE d.id = ? ";
+
+        $stmt = mysqli_prepare($this->conn, $query);
+        if(!$stmt)
+        {
+            echo "sql statment feiled";
+        }
+        else
+        {
+            mysqli_stmt_bind_param($stmt, "ssiii", $data['address'], $typeDeal, $data['price'], $agentNameId, $data['id'] );
+
+            $agentNameId = htmlspecialchars($_POST['agentName']);
+            $typeDeal = htmlspecialchars($_POST['typeDeal']);
+
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_fetch($stmt);
+
+        }
+        if($stmt == true){
             return true;
         }else{
             return false;
         }
-        // $stmt = mysqli_prepare($this->conn, $query);
-        // if(!$stmt)
-        // {
-        //     echo "sql statment feiled";
-        // }
-        // else
-        // {
-        //     mysqli_stmt_bind_param($stmt, "ssiii", $data['address'], $data['typeDeal'], $data['price'], $data['agent_id'], $data['id'] );
-        //     mysqli_stmt_execute($stmt);
-        //     mysqli_stmt_fetch($stmt);
-
-        // }
-        // if($stmt == true){
-        //     var_dump($stmt);
-        //         print_r($stmt);
-            
-         
-
-        // }else{
-        //     var_dump($stmt);
-        //     print_r($stmt);
-        // }
     }
 
     public function insertGroup(){
@@ -133,6 +143,44 @@ class Model{
             }
             return $result;
         }
+    }
+
+    public function deleteAgent($id){
+        $query = "DELETE d.*, ad.* FROM `deals` as d, `agent_deal` as ad WHERE d.id = ? AND d.id = ad.deal_id";
+        $stmt = mysqli_prepare($this->conn, $query);
+         
+        $bind = $stmt->bind_param('i', $id);
+         
+        // Check if bind_param() failed.
+        // bind_param() can fail because the number of parameter doesn't match the placeholders
+        // in the statement, or there's a type conflict, or ....
+         
+        if ( false === $bind ) {
+            error_log('bind_param() failed:');
+            error_log( print_r( htmlspecialchars($stmt->error), true ) );
+            exit();
+        }
+         
+        // Execute the query
+         
+        $exec = $stmt->execute();
+         
+        // Check if execute() failed. 
+        // execute() can fail for various reasons. And may it be as stupid as someone tripping over the network cable
+         
+        if ( false === $exec ) {
+            error_log('mysqli execute() failed: ');
+            error_log( print_r( htmlspecialchars($stmt->error), true ) );
+        }
+        else{
+            echo "<script>alert('delete successfuly')</script>";
+            header("Location: index.php");
+        }
+        // if ($sql = $this->conn->query($query)) {
+        //     return true;
+        // }else{
+        //     return false;
+        // }
     }
 }
 ?>
